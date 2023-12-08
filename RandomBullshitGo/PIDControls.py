@@ -1,4 +1,11 @@
-import rotary_encoders
+import rotaryio
+import time
+import board
+import busio
+import analogio
+import pwmio
+import digitalio
+import wheels
 
 
 # PID control parameters
@@ -12,22 +19,6 @@ error_integral_right = 0
 last_error_left = 0
 last_error_right = 0
 setpoint = 0.7  # Target RPS
-
-# Initialize motors
-motor_left = pwmio.PWMOut(board.GP2, frequency = 1000)
-
-d1 = digitalio.DigitalInOut(board.GP1)
-d1.direction = digitalio.Direction.OUTPUT
-d2 = digitalio.DigitalInOut(board.GP0)
-d2.direction = digitalio.Direction.OUTPUT  
-
-
-motor_right = pwmio.PWMOut(board.GP5, frequency = 1000)
-
-d3 = digitalio.DigitalInOut(board.GP4)
-d3.direction = digitalio.Direction.OUTPUT
-d4 = digitalio.DigitalInOut(board.GP3)
-d4.direction = digitalio.Direction.OUTPUT 
 
 
 #encoders

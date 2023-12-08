@@ -5,6 +5,9 @@ import analogio
 import pwmio
 import digitalio
 
+num = input()
+speed = float(num)
+
 motor1 = pwmio.PWMOut(board.GP2, frequency = 1000)
 
 d1 = digitalio.DigitalInOut(board.GP1)
@@ -25,10 +28,5 @@ d2.value = 1
 d3.value = 0
 d4.value = 1
 
-#motor1.duty_cycle = 65000
-motor2.duty_cycle = 65000 #left wheel on junior, right on senior
-
-running = False
-
-
-
+motor1.duty_cycle = int(abs(speed) * 65535)
+motor2.duty_cycle = int(abs(speed) * 65535)

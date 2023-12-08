@@ -37,6 +37,8 @@ left_enc = rotaryio.IncrementalEncoder(board.GP6, board.GP7)  #first one is a se
 left_last_position = None
 right_enc = rotaryio.IncrementalEncoder(board.GP26, board.GP27)  #first one is a second is b
 right_last_position = None
+
+
 while True:
     left_position = left_enc.position
     right_position = right_enc.position
@@ -47,13 +49,20 @@ while True:
         print("right pos = ", right_position)
     right_last_position = right_position
     
+    motor1.duty_cycle = 55000
+    motor2.duty_cycle = 55000
+    
     if left_position > right_position:
         motor1.duty_cycle = 0
-        motor2.duty_cycle = 35000
+        motor2.duty_cycle = 55000
     if left_position < right_position:
-        motor1.duty_cycle = 35000
+        motor1.duty_cycle = 55000
         motor2.duty_cycle = 0
     if left_position == right_position:
-        motor1.duty_cycle = 35000
-        motor2.duty_cycle = 35000
+        motor1.duty_cycle = 55000
+        motor2.duty_cycle = 55000
+        
+
+
+    
 

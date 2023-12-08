@@ -40,7 +40,7 @@ i2c = busio.I2C(board.GP15, board.GP14) # uses board.SCL and board.SDA
 
 mux = adafruit_tca9548a.TCA9548A(i2c) # make tsa (multiplexer) object using i2c
 
-Fsensor = adafruit_vl6180x.VL6180X(mux[0])
+Fsensor = adafruit_vl6180x.VL6180X(mux[7])
 
 
 
@@ -63,11 +63,11 @@ while True:
         right_last_position = right_position
         
         if left_position > right_position:
-            motor1.duty_cycle = 30000
-            motor2.duty_cycle = 35000
+            motor1.duty_cycle = 0
+            motor2.duty_cycle = 55000
         if left_position < right_position:
-            motor1.duty_cycle = 35000
-            motor2.duty_cycle = 30000
+            motor1.duty_cycle = 55000
+            motor2.duty_cycle = 0
         if left_position == right_position:
-            motor1.duty_cycle = 35000
-            motor2.duty_cycle = 35000
+            motor1.duty_cycle = 55000
+            motor2.duty_cycle = 55000
