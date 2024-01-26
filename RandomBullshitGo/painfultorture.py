@@ -71,6 +71,7 @@ def forward():
         
         if left_enc.position > right_enc.position:
             motorR.duty_cycle = 30000
+            motorL.duty_cycle = 0
         elif right_enc.position > left_enc.position:
             motorR.duty_cycle = 0
             motorL.duty_cycle = 30000
@@ -91,9 +92,10 @@ def smallforward():
     timeout = time.time() + 0.3
     while time.time() < timeout:
         
-        if left_enc.position > right_enc.position and error != 0:
+        if left_enc.position > right_enc.position:
             motorR.duty_cycle = 30000
-        elif right_enc.position > left_enc.position and error != 0:
+            motorL.duty_cycle = 0
+        elif right_enc.position > left_enc.position:
             motorR.duty_cycle = 0
             motorL.duty_cycle = 30000
         else:
